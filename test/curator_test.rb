@@ -342,26 +342,11 @@ class CuratorTest<Minitest::Test
    ansel_adams = curator.find_artist_by_id("2")
    diane_arbus = curator.find_artist_by_id("3")
 
-   # photos_by_henri = find_photographs_by_artist(henri_cartier)
-   # photos_by_ansel = find_photographs_by_artist(ansel_adams)
-   # photos_by_diane = find_photographs_by_artist(diane_arbus)
-
-   # binding.pry
    assert_equal [diane_arbus], curator.artists_with_multiple_photographs
-   #so first off the method find photographs by artist returns ALL instances of the
-   #photos by the artist. i could say that if the length of that array that is returned
-   #is more than one, shovel that particular artist into the arists with multiple
-   #photos array
 
-   #or i can maybe enumerate over the photographs array and count how many times
-   #an artist id appears and if it appears more than one i can put that artist matching the id into an array
-
-   #maybe a hash would be useful. lets get to work.
-   #ok too much time here. moving on.
   end
 
   def test_i_can_find_photos_based_on_where_the_artist_was_from
-    skip
     curator = Curator.new
 
     photo_1_attributes = {
