@@ -10,4 +10,5 @@ class Photograph
     @artist_id = params[:artist_id]
     @year = params[:year]
   end
+  
 end

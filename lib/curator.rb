@@ -29,9 +29,58 @@ class Curator
   end
 
   def find_photographs_by_artist(artist)
-  @photographs.find_all do |photo|
+   photos = @photographs.find_all do |photo|
     photo.artist_id == artist.id
    end
+   # artists_with_more_than_one = []
+   # photos.length > 1
+   # artists_with_more_than_one << photos.
   end
+
+  # def artists_with_multiple_photographs
+  #  if find_photograph_by_artist(artist).length > 1
+  #
+  # end
+
+
+  # artists = {}
+  # @photographs.each do |photo|
+  #   binding.pry
+  #   artists[photo.artist_id] = @artists.id
+  # end
+  # artists
+  #each time an artist id
+  #
+  # def account_summary
+  #   summary = {}
+  #   @accounts.each do |account|
+  #     summary[account.account_number] = account.balance
+  #   end
+  #   summary
+  # end
+
+  # def return_each_artists_attributes(artist)
+  #   hash = {}
+  #   find_photographs_by_artist(artist)
+  #   hash[artist_id] = artist.artist_id
+  #   hash[id] = artist.id
+  #   hash[name] = artist.name
+  #   hash[year] = artist.year
+  #   hash
+  # end
+
+  def photographs_taken_by_artists_from(location)
+    artist_ids = @artists.map do |artist|
+      artist.id
+    end
+  find_photograph_by_id(artist_ids)
+  end
+  #   photos = []
+  #
+  #   #ok so here, i have to find each artist by id
+  #   #and see where they are from
+  #
+  # end
+
 
 end

@@ -264,4 +264,177 @@ class CuratorTest<Minitest::Test
    #and match that to the artist_id of the photograph itself
   end
 
+  def test_artists_with_more_than_one_photograph
+    skip
+    curator = Curator.new
+
+    photo_1_attributes = {
+      id: "1",
+      name: "Rue Mouffetard, Paris (Boy with Bottles)",
+      artist_id: "1",
+      year: "1954"
+    }
+
+    photo_2_attributes = {
+      id: "2",
+      name: "Moonrise, Hernandez",
+      artist_id: "2",
+      year: "1941"
+    }
+
+    photo_3_attributes = {
+      id: "3",
+      name: "Identical Twins, Roselle, New Jersey",
+      artist_id: "3",
+      year: "1967"
+    }
+
+    photo_4_attributes = {
+      id: "4",
+      name: "Child with Toy Hand Grenade in Central Park",
+      artist_id: "3",
+      year: "1962"
+    }
+
+    artist_1_attributes = {
+      id: "1",
+      name: "Henri Cartier-Bresson",
+      born: "1908",
+      died: "2004",
+      country: "France"
+    }
+
+   artist_2_attributes = {
+     id: "2",
+     name: "Ansel Adams",
+     born: "1902",
+     died: "1984",
+     country: "United States"
+   }
+
+   artist_3_attributes = {
+     id: "3",
+     name: "Diane Arbus",
+     born: "1923",
+     died: "1971",
+     country: "United States"
+   }
+
+   photo_1 = Photograph.new(photo_1_attributes)
+   photo_2 = Photograph.new(photo_2_attributes)
+   photo_3 = Photograph.new(photo_3_attributes)
+   photo_4 = Photograph.new(photo_4_attributes)
+
+   artist_1 = Artist.new(artist_1_attributes)
+   artist_2 = Artist.new(artist_2_attributes)
+   artist_3 = Artist.new(artist_3_attributes)
+
+   curator.add_photograph(photo_1)
+   curator.add_photograph(photo_2)
+   curator.add_photograph(photo_3)
+   curator.add_photograph(photo_4)
+
+   curator.add_artist(artist_1)
+   curator.add_artist(artist_2)
+   curator.add_artist(artist_3)
+
+   henri_cartier_bresson = curator.find_artist_by_id("1")
+   ansel_adams = curator.find_artist_by_id("2")
+   diane_arbus = curator.find_artist_by_id("3")
+
+   photos_by_henri = find_photographs_by_artist(henri_cartier)
+   photos_by_ansel = find_photographs_by_artist(ansel_adams)
+   photos_by_diane = find_photographs_by_artist(diane_arbus)
+
+   # binding.pry
+   assert_equal [diane_arbus], curator.artists_with_multiple_photographs
+   #so first off the method find photographs by artist returns ALL instances of the
+   #photos by the artist. i could say that if the length of that array that is returned
+   #is more than one, shovel that particular artist into the arists with multiple
+   #photos array
+
+   #or i can maybe enumerate over the photographs array and count how many times
+   #an artist id appears and if it appears more than one i can put that artist matching the id into an array
+
+   #maybe a hash would be useful. lets get to work.
+   #ok too much time here. moving on.
+  end
+
+  def test_i_can_find_photos_based_on_where_the_artist_was_from
+    curator = Curator.new
+
+    photo_1_attributes = {
+      id: "1",
+      name: "Rue Mouffetard, Paris (Boy with Bottles)",
+      artist_id: "1",
+      year: "1954"
+    }
+
+    photo_2_attributes = {
+      id: "2",
+      name: "Moonrise, Hernandez",
+      artist_id: "2",
+      year: "1941"
+    }
+
+    photo_3_attributes = {
+      id: "3",
+      name: "Identical Twins, Roselle, New Jersey",
+      artist_id: "3",
+      year: "1967"
+    }
+
+    photo_4_attributes = {
+      id: "4",
+      name: "Child with Toy Hand Grenade in Central Park",
+      artist_id: "3",
+      year: "1962"
+    }
+
+    artist_1_attributes = {
+      id: "1",
+      name: "Henri Cartier-Bresson",
+      born: "1908",
+      died: "2004",
+      country: "France"
+    }
+
+   artist_2_attributes = {
+     id: "2",
+     name: "Ansel Adams",
+     born: "1902",
+     died: "1984",
+     country: "United States"
+   }
+
+   artist_3_attributes = {
+     id: "3",
+     name: "Diane Arbus",
+     born: "1923",
+     died: "1971",
+     country: "United States"
+   }
+
+   photo_1 = Photograph.new(photo_1_attributes)
+   photo_2 = Photograph.new(photo_2_attributes)
+   photo_3 = Photograph.new(photo_3_attributes)
+   photo_4 = Photograph.new(photo_4_attributes)
+
+   artist_1 = Artist.new(artist_1_attributes)
+   artist_2 = Artist.new(artist_2_attributes)
+   artist_3 = Artist.new(artist_3_attributes)
+
+   curator.add_photograph(photo_1)
+   curator.add_photograph(photo_2)
+   curator.add_photograph(photo_3)
+   curator.add_photograph(photo_4)
+
+   curator.add_artist(artist_1)
+   curator.add_artist(artist_2)
+   curator.add_artist(artist_3)
+
+
+   assert_equal [photo_1, photo_2], curator.photographs_taken_by_artists_from("United States")
+  end
+
 end
