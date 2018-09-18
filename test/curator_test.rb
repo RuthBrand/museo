@@ -127,4 +127,56 @@ class CuratorTest<Minitest::Test
    assert_equal "Henri Cartier-Bresson", curator.artists.first.name
   end
 
+  def test_i_can_find_an_artist_by_artist_id
+    curator = Curator.new
+    artist_1_attributes = {
+      id: "1",
+      name: "Henri Cartier-Bresson",
+      born: "1908",
+      died: "2004",
+      country: "France"
+    }
+
+   artist_2_attributes = {
+     id: "2",
+     name: "Ansel Adams",
+     born: "1902",
+     died: "1984",
+     country: "United States"
+   }
+
+   artist_1 = Artist.new(artist_1_attributes)
+   artist_2 = Artist.new(artist_2_attributes)
+
+   curator.add_artist(artist_1)
+   curator.add_artist(artist_2)
+   #does this need to be returned outside the array?
+   assert_equal artist_1, curator.find_artist_by_id("1")
+  end
+
+  def test_i_can_find_a_photograph_by_id
+    curator = Curator.new
+    photo_1_attributes = {
+      id: "1",
+      name: "Rue Mouffetard, Paris (Boy with Bottles)",
+      artist_id: "1",
+      year: "1954"
+    }
+
+    photo_2_attributes = {
+      id: "2",
+      name: "Moonrise, Hernandez",
+      artist_id: "2",
+      year: "1941"
+    }
+
+    photo_1 = Photograph.new(photo_1_attributes)
+    photo_2 = Photograph.new(photo_2_attributes)
+
+    curator.add_photograph(photo_1)
+    curator.add_photograph(photo_2)
+
+    assert_equal photo_2, curator.find_photograph_by_id("2")
+  end
+
 end
