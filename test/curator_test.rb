@@ -258,7 +258,7 @@ class CuratorTest<Minitest::Test
    #many thanks to using find instead of find all
    # binding.pry
 
-   assert_equal [photo_3, photo_4], find_photographs_by_artist(diane_arbus)
+   assert_equal [photo_3, photo_4], curator.find_photographs_by_artist(diane_arbus)
    #in my photographs, i have a variable called artist_id.
    #i could look for the artist id of the artist i am feeding in
    #and match that to the artist_id of the photograph itself
