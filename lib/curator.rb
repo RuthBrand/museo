@@ -89,7 +89,6 @@ class Curator
     second_artists_location = second_artist.country
     third_artists_location = third_artist.country
 
-    binding.pry
 
     pictures = []
 
@@ -99,6 +98,7 @@ class Curator
     end
 
     if second_artists_location == location
+      binding.pry
       pictures << second_artists_photos
     end
 
@@ -106,7 +106,7 @@ class Curator
       pictures << third_artists_photos
     end
 
-   location
+  pictures.flatten
 
   end
 
