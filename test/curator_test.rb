@@ -265,7 +265,7 @@ class CuratorTest<Minitest::Test
   end
 
   def test_artists_with_more_than_one_photograph
-
+    
     curator = Curator.new
 
     photo_1_attributes = {
@@ -347,6 +347,7 @@ class CuratorTest<Minitest::Test
   end
 
   def test_i_can_find_photos_based_on_where_the_artist_was_from
+    skip
     curator = Curator.new
 
     photo_1_attributes = {
