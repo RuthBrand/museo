@@ -265,7 +265,7 @@ class CuratorTest<Minitest::Test
   end
 
   def test_artists_with_more_than_one_photograph
-    skip
+
     curator = Curator.new
 
     photo_1_attributes = {
@@ -342,9 +342,9 @@ class CuratorTest<Minitest::Test
    ansel_adams = curator.find_artist_by_id("2")
    diane_arbus = curator.find_artist_by_id("3")
 
-   photos_by_henri = find_photographs_by_artist(henri_cartier)
-   photos_by_ansel = find_photographs_by_artist(ansel_adams)
-   photos_by_diane = find_photographs_by_artist(diane_arbus)
+   # photos_by_henri = find_photographs_by_artist(henri_cartier)
+   # photos_by_ansel = find_photographs_by_artist(ansel_adams)
+   # photos_by_diane = find_photographs_by_artist(diane_arbus)
 
    # binding.pry
    assert_equal [diane_arbus], curator.artists_with_multiple_photographs
@@ -361,6 +361,7 @@ class CuratorTest<Minitest::Test
   end
 
   def test_i_can_find_photos_based_on_where_the_artist_was_from
+    skip
     curator = Curator.new
 
     photo_1_attributes = {

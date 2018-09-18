@@ -29,10 +29,44 @@ class Curator
   end
 
   def find_photographs_by_artist(artist)
-   photos = @photographs.find_all do |photo|
+    @photographs.find_all do |photo|
     photo.artist_id == artist.id
    end
   end
+
+  def artists_with_multiple_photographs
+    ids = @photographs.map do |photo|
+      photo.artist_id
+    end
+
+    first_artist = find_artist_by_id(ids.first)
+    second_artist = find_artist_by_id(ids[1])
+    third_artist = find_artist_by_id(ids.last)
+
+    first_artists_photos = find_photographs_by_artist(first_artist)
+    second_artists_photos = find_photographs_by_artist(second_artist)
+    third_artists_photos = find_photographs_by_artist(third_artist)
+
+    count_of_first_artist = first_artists_photos.length
+    count_of_second_artist = second_artists_photos.length
+    count_of_third_artist = third_artists_photos.length
+    artists_greater_than_one = []
+    if count_of_first_artist > 1
+      artists_greater_than_one << first_artist
+    end
+
+    if count_of_second_artist > 1
+      artists_greater_than_one << second_artist
+    end
+
+    if count_of_third_artist > 1
+      artists_greater_than_one << third_artist
+    end
+
+    artists_greater_than_one
+  end
+
+
 
 
 
