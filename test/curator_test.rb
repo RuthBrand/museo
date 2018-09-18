@@ -253,7 +253,15 @@ class CuratorTest<Minitest::Test
    curator.add_artist(artist_3)
 
    diane_arbus = curator.find_artist_by_id("3")
-   
+   #this method returns the entire artist object
+   #that matches that id and it is NOT in an array
+   #many thanks to using find instead of find all
+   # binding.pry
+
+   assert_equal [photo_3, photo_4], find_photographs_by_artist(diane_arbus)
+   #in my photographs, i have a variable called artist_id.
+   #i could look for the artist id of the artist i am feeding in
+   #and match that to the artist_id of the photograph itself
   end
 
 end
