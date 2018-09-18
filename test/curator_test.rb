@@ -420,7 +420,7 @@ class CuratorTest<Minitest::Test
    curator.add_artist(artist_3)
 
 
-   assert_equal [photo_2, photo_4], curator.photographs_taken_by_artists_from("United States")
+   assert_equal [photo_2, photo_3, photo_4], curator.photographs_taken_by_artists_from("United States")
   end
 
 end
