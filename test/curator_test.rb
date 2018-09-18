@@ -42,4 +42,9 @@ class CuratorTest<Minitest::Test
 
     assert_equal [photo_1, photo_2], curator.photographs
   end
+
+  #note - i chose to not write a test to get the first phograph object,
+  #as that method call (curator.photographs.first) is a ruby method
+  #when i call it, it returns the object, but i don't want to write
+  #test for the already made ruby method
 end
