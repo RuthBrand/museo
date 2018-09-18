@@ -45,8 +45,20 @@ class Curator
       occurance_hash[number] += 1
   end
   occurance_hash
+  artists_more_than_one = occurance_hash.keep_if do |key, value|
+    value > 1
+  end
+  artist_ids = []
+  artists_more_than_one.each do |key, value|
+    artist_ids << key
+  end
+  artist_ids
+  @artists.keep_if do |artist|
+    artist.id.split("") == artist_ids
+  end
+  #this returns this {"1"=>1, "2"=>1, "3"=>2}
  end
-  @artists
+
 
 
 end
