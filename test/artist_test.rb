@@ -1,8 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/artist'
-#may not need photograph, take out later if needed
-require './lib/photograph'
 require 'pry'
 
 class ArtistTest<Minitest::Test
@@ -34,5 +32,5 @@ class ArtistTest<Minitest::Test
     assert_equal "1984", artist.died
     assert_equal "United States", artist.country
   end
-  
+
 end
